@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Speaker.create({first_name: "Dani", last_name: "Zaghian", email: "danielle@actualize.co"})
 Speaker.create({first_name: "Ted", last_name: "Logan", email: "partyondudes@gmail.com"})
+Speaker.create({first_name: "Doc", last_name: "Brown", email: "1.21Gigawatts@gmail.com"})
