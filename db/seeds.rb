@@ -8,3 +8,5 @@
 Speaker.create({first_name: "Dani", last_name: "Zaghian", email: "danielle@actualize.co"})
 Speaker.create({first_name: "Ted", last_name: "Logan", email: "partyondudes@gmail.com"})
 Speaker.create({first_name: "Doc", last_name: "Brown", email: "1.21Gigawatts@gmail.com"})
+Meeting.create({title: "Office Space", agenda: "Return Milton's red stapler", time:"1:00 PM"})
+Meeting.create({title: "Vongola Famiglia", agenda: "Announce new vongola leader", time: "5:00 PM"})
