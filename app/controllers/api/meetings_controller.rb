@@ -1,11 +1,47 @@
 class Api::MeetingsController < ApplicationController
-  def all_meetings_action
-    @meeting = Meeting.all
-    render 'all_meetings_view.json.jbuilder'
+  def index
+    @meetings = Meeting.all
+    render 'index.json.jbuilder'
   end
 
-  def one_meeting_action
-    @meeting = Meeting.first
-    render 'one_meeting_view.json.jbuilder'
+  def create
+    @meeting = Meeting.new(
+                          title: params[:title],
+                          agenda: params[:agenda],
+                          time: params[:time],
+                          location: params[:location],
+                          remote: params[:remote]
+                         )
+    if @product.save
+      render 'show.json.jbuilder'
+    else
+      render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
+    end
+  end
+
+  def show
+    @meeting = Meeting.find(params[:id])
+    render 'show.json.jbuilder'
+  end  
+
+  def update
+    @meeting = Meeting.find(params[:id])
+    @meeting.title = params[:title] || @meeting.title
+    @meeting.agenda =meeting[:agenda] || @meeting.agenda
+    @meeting.time = params[:time] || @meeting.time
+    @meeting.location = params[:location] || @meeting.location
+    @meeting.remote = params[:remote] || @meeting.remote
+    
+    if @product.save
+      render 'show.json.jbuilder'
+    else
+      render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @meeting = Meeting.find(params[:id])
+    @meeting.destroy
+    render json: {message: "Product successfully destroyed"}
   end
 end
