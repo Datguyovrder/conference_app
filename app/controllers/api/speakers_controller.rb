@@ -1,4 +1,4 @@
-class Api::ConferencesController < ApplicationController
+class Api::SpeakersController < ApplicationController
   def index
     @speaker = Speaker.all
     render 'index.json.jbuilder'

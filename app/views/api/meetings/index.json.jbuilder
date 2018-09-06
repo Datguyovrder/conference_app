@@ -1,1 +1,1 @@
-json.array! @meetings, partial: 'product', as: :product
+json.array! @meetings, partial: 'meeting', as: :meeting
