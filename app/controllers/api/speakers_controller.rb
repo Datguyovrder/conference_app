@@ -1,6 +1,6 @@
 class Api::SpeakersController < ApplicationController
   def index
-    @speaker = Speaker.all
+    @speakers = Speaker.all.order(age: :asc)
     render 'index.json.jbuilder'
   end
 
@@ -27,7 +27,7 @@ class Api::SpeakersController < ApplicationController
   def update
     @speaker = Speaker.find(params[:id])
     @speaker.first_name = params[:first_name] || @speaker.first_name
-    @speaker.last_name =meeting[:last_name] || @speaker.last_name
+    @speaker.last_name = params[:last_name] || @speaker.last_name
     @speaker.email = params[:email] || @speaker.email
     @speaker.gender = params[:gender] || @speaker.gender
     @speaker.age = params[:age] || @speaker.age

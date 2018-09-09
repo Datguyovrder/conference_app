@@ -1,6 +1,6 @@
 class Api::MeetingsController < ApplicationController
   def index
-    @meetings = Meeting.all
+    @meetings = Meeting.where(remote: true)
     render 'index.json.jbuilder'
   end
 
@@ -27,7 +27,7 @@ class Api::MeetingsController < ApplicationController
   def update
     @meeting = Meeting.find(params[:id])
     @meeting.title = params[:title] || @meeting.title
-    @meeting.agenda =meeting[:agenda] || @meeting.agenda
+    @meeting.agenda = params[:agenda] || @meeting.agenda
     @meeting.time = params[:time] || @meeting.time
     @meeting.location = params[:location] || @meeting.location
     @meeting.remote = params[:remote] || @meeting.remote
